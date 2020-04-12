@@ -79,6 +79,7 @@ spec:
         summary: 'broker overloaded'
         # If brokerConfigGroup is defined it will override scaled broker config
         # brokerConfigGroup: 'default_group'
+        brokerConfigGroup: 'default'
         storageClass: 'standard'
         mountPath: '/kafkalog'
         diskSize: '2G'
@@ -91,6 +92,7 @@ spec:
         severity: alert
       annotations:
         description: 'broker {{ $labels.brokerId }} underreplicated'
+        brokerConfigGroup: 'default'
         summary: 'broker underreplicated'
         storageClass: 'standard'
         mountPath: '/kafkalog'
@@ -104,6 +106,7 @@ spec:
         severity: alert
       annotations:
         description: 'broker {{ $labels.brokerId }} has high partition count'
+        brokerConfigGroup: 'default'
         summary: 'high partition count'
         storageClass: 'standard'
         mountPath: '/kafkalog'
@@ -117,6 +120,7 @@ spec:
         severity: alert
       annotations:
         description: 'broker {{ $labels.brokerId }} has low partition count'
+        brokerConfigGroup: 'default'
         summary: 'low partition count'
         command: 'downScale'
     - alert: RemainingDiskSpaceLow
@@ -126,6 +130,7 @@ spec:
         severity: alert
       annotations:
         description: 'broker {{ $labels.brokerId }} has low disk space'
+        brokerConfigGroup: 'default'
         summary: 'low diskspace'
         storageClass: 'standard'
         mountPath: '/kafkalog'
@@ -190,4 +195,4 @@ spec:
   resources:
     requests:
       memory: 400Mi
-  enableAdminAPI: false
+  enableAdminAPI: true

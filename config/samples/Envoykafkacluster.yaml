@@ -289,3 +289,16 @@ spec:
       {
         "min.insync.replicas": 3
       }
+
+   # monitoringConfig describes the monitoring related configs
+    monitoringConfig:
+  # jmxImage describes the used prometheus jmx exporter agent container
+      jmxImage: "banzaicloud/jmx-javaagent:0.12.0"
+  # pathToJar describes the path to the jar file in the given image
+      pathToJar: "/opt/jmx_exporter/jmx_prometheus_javaagent-0.12.0.jar"
+  # kafkaJMXExporterConfig describes jmx exporter config for Kafka
+      kafkaJMXExporterConfig: |
+       lowercaseOutputName: true
+  # cCJMXExporterConfig describes jmx exporter config for CruiseControl
+      cCJMXExporterConfig: |
+       lowercaseOutputName: true
